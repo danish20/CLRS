@@ -21,12 +21,13 @@ public class MergeSort {
 		int pivot = (start+end)/2;
 		mergeSort(a, start, pivot);
 		mergeSort(a, pivot+1, end);
-		a = merge(a,start,end,pivot);
+		a = modifiedMerge(a,start,end,pivot);
 		}
 		
 		return a;
 	}
 	
+	//Using Sentinel
 	public static int[] merge(int a[], int start, int end, int pivot)
 	{
 		
@@ -65,4 +66,55 @@ public class MergeSort {
 		
 		return a;
 	}
+	
+	
+	//Without using sentinel 
+	public static int[] modifiedMerge(int a[], int start, int end, int pivot)
+	{
+		
+		int num1 = pivot-start+1;
+		int num2 = end - pivot;
+		int left[] = new int[num1];
+		int right[] = new int[num2];
+		
+		for (int i = 0; i < num1; i++) {
+			left[i] = a[start+i];
+		}
+		for (int i = 0; i < num2; i++) {
+			right[i] = a[pivot+i+1];
+		}		
+		int i = 0;
+		int j = 0;
+		
+		for(int k = start; k<= end;k++)
+		{
+			if(i<num1 && j<num2)
+			{
+			if(left[i]<=right[j])
+			{
+				a[k] = left[i];
+				i++;
+			}
+			
+			else
+			{
+				a[k] = right[j];
+				j++;
+			}
+			}
+			else if(j<num2)
+			{
+				a[k] = right[j];
+				j++;
+			}
+			else
+			{
+				a[k] = left[i];
+				i++;
+			}
+		}
+		
+		return a;
+	}
+
 }
