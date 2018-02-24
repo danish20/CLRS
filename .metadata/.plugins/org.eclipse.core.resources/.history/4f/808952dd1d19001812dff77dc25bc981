@@ -1,8 +1,8 @@
 
 public class SumOfTwoBinaryNumbers {
 	public static void main(String[] args) {
-		int a[]=  {1,0,0,1,1,1};
-		int b[]=  {1,1,1,0,0,1};
+		int a[]={1,0,0,1,1,1};
+		int b[] = {1,1,1,0,0,1};
 		print(findSum(a, b));
 	}
 	
